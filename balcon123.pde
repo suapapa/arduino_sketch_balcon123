@@ -44,13 +44,13 @@ void loop(void)
   digitalWrite(13, !digitalRead(13));
 
   if (digitalRead(PIN_FEDAL_1) == 0) {
-    UsbKeyboard.sendKeyStroke(KEY_1, MOD_CONTROL_LEFT);
+    UsbKeyboard.sendKeyStroke(KEY_F1, MOD_CONTROL_LEFT);
     delayMs(20);
   } else if (digitalRead(PIN_FEDAL_2) == 0) {
-    UsbKeyboard.sendKeyStroke(KEY_2, MOD_CONTROL_LEFT);
+    UsbKeyboard.sendKeyStroke(KEY_F2, MOD_CONTROL_LEFT);
     delayMs(20);
   } else if (digitalRead(PIN_FEDAL_3) == 0) {
-    UsbKeyboard.sendKeyStroke(KEY_3, MOD_CONTROL_LEFT);
+    UsbKeyboard.sendKeyStroke(KEY_F3, MOD_CONTROL_LEFT);
     delayMs(20);
   }
 }
