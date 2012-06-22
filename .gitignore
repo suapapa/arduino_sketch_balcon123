@@ -1,0 +1,7 @@
+.gitignore
+.sconsign.dblite
+*.elf
+*.hex
+*.orig
+build/
+

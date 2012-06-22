@@ -1,0 +1,3 @@
+[submodule "libs/UsbKeyboard"]
+	path = libs/UsbKeyboard
+	url = https://github.com/suapapa/arduino_library_UsbKeyboard.git
