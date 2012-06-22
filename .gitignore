@@ -4,4 +4,4 @@
 *.hex
 *.orig
 build/
-
+hw/*.?#?
