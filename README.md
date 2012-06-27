@@ -2,9 +2,13 @@
 
 Arduino sketch to made DIY foot controller.
 
+![balcon123_pedals](https://github.com/suapapa/arduino_sketch_balcon123/blob/master/pic/balcon123_pedals.jpg?raw=true)
+
 By using Arduino as USB-HID, can makes bind a key to release easier and,
 also, can expend to three pedals with minimal cost.
 Only one usb slot used for three pedals.
+
+![balcon123_in_box](https://github.com/suapapa/arduino_sketch_balcon123/blob/master/pic/balcon123_in_box.jpg?raw=true)
 
 The [pedal](http://ibuy.kr/iAiAUWa) I used is only -about- $2 for each in Korea. :)
 
@@ -28,7 +32,7 @@ for desktop switching, use them with `Ctrl`.
 
 It's fun and handy! Thanks to alevchunk for this greate idea.
 
-## Get Source
+## Get source
 
 Should clone this project to directory, balcon123. It's name of the sketch.
 
@@ -40,7 +44,7 @@ Update submodule to import UsbKeyboard library.
     $ git submodule update
 
 
-## Build
+## Build sketch
 
 Can use scons to build it.
 I made a script `build.sh` to specify mcu and, etc...
