@@ -55,6 +55,29 @@ If you have problem with scons,
 check [arscons](https://github.com/suapapa/arscons.git)'s wiki
 for the guide.
 
+## Hardware
+
+Cause of USB port in Arduino board is only for serial, some extra
+HW build requierd for another USB port for keyboard.
+It only need few resistors and couple of zenor-diodes or a 3V3 LDO.
+Not so hard to build.
+
+You can find zenor-diode method from following link:
+
+   [Virtual USB Keyboard](http://www.practicalarduino.com/projects/virtual-usb-keyboard)
+
+I used LDO method cause of I have some extra KA78R33. You can find my
+schematic under `hw/`. You need Cadsoft's eagle cad to open it.
+
+I used an Arduino diecimila (which use Atmega168) compatible board.
+The sketch also works with Arduino duemilanove and Uno (which use Atmega328).
+
+The HEX not big. I wanted use Atmega8 based Arduino first for cost down.
+But, 6 seconds boot delay in NG bootloader made problem.
+According to Host's kernel log, It detect the USB device almost immediatly
+when it is pulgged then, tried find what it is but, boot delay can't make
+respond in time and failed.
+
 
 ## Use for Vim
 
