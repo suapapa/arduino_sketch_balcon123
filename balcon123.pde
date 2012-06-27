@@ -82,26 +82,27 @@ void loop(void)
       UsbKeyboard.sendKeyStroke(KEY_L);
       UsbKeyboard.sendKeyStroke(KEY_D);
     }
-  } else if (fedalChanged & BIT_FEDAL_1) {
+    fedalLast = fedalCurr;
+    delayMs(20);
+    return;
+  }
+
+  UsbKeyboard.sendKeyStroke(KEY_ESC);
+  delayMs(20);
+  if (fedalChanged & BIT_FEDAL_1) {
     if (fedalCurr & BIT_FEDAL_1) {
-      UsbKeyboard.sendKeyStroke(KEY_ESC);
-      UsbKeyboard.sendKeyStroke(KEY_F1, MOD_CONTROL_LEFT);
-    } else {
-      UsbKeyboard.sendKeyStroke(KEY_ESC);
+      UsbKeyboard.sendKeyStroke(KEY_F2);
+      delayMs(20);
     }
   } else if (fedalChanged & BIT_FEDAL_2) {
     if (fedalCurr & BIT_FEDAL_2) {
-      UsbKeyboard.sendKeyStroke(KEY_ESC);
-      UsbKeyboard.sendKeyStroke(KEY_F2, MOD_CONTROL_LEFT);
-    } else {
-      UsbKeyboard.sendKeyStroke(KEY_ESC);
+      UsbKeyboard.sendKeyStroke(KEY_F3);
+      delayMs(20);
     }
   } else if (fedalChanged & BIT_FEDAL_3) {
     if (fedalCurr & BIT_FEDAL_3) {
-      UsbKeyboard.sendKeyStroke(KEY_ESC);
-      UsbKeyboard.sendKeyStroke(KEY_F2, MOD_CONTROL_LEFT);
-    } else {
-      UsbKeyboard.sendKeyStroke(KEY_ESC);
+      UsbKeyboard.sendKeyStroke(KEY_F4);
+      delayMs(20);
     }
   }
 

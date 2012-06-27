@@ -1,7 +1,32 @@
-# balcon123 - 3 Foot switch witch mapped Ctrl+F1, Ctrl+F2, Ctrl+F3
+# balcon123 - 3 Foot switch witch mapped F2, F3, F4
 
-This project is Arduino sketch to made DIY foot controller.
-Inspired from [Vim-clucth](https://github.com/alevchuk/vim-clutch).
+Arduino sketch to made DIY foot controller.
+
+By using Arduino as USB-HID, can makes bind a key to release easier and,
+also, can expend to three fedals with minimal cost.
+Only one usb slot used for three fedals.
+
+The [fedal](http://ibuy.kr/iAiAUWa) I used is only -about- $2 for each in Korea. :)
+
+## History
+
+It inspired from [Vim-clucth](https://github.com/alevchuk/vim-clutch) by alevchunk.
+
+I want use the fadals not only for vim but also for another programs e.g.
+desktop screen switching by same meta-key combination for vim for map
+and desktop manager to use keyboard shortcut.
+
+At first, I planned map those three fedals to `Ctrl-1`, `Ctrl-2`, `Ctrl-3`.
+But, found it's hard to use `Ctrl` with number key for map in vimrc.
+And, changed the plan to use `Ctrl-{F1|F2|F3}`. It works for vim.
+But, after I also bind those key to desktop screen switching, key-maps in vim
+ignored (only screen switching is working). :(
+
+So, changed plan to use `F2`, `F3`, `F4` without `Ctrl`.
+Map them to `I`, `i`, `A` for vim. and,
+for desktop switching, use them with `Ctrl`.
+
+It's fun and handy! Thanks to alevchunk for this greate idea.
 
 ## Get Source
 
@@ -29,12 +54,13 @@ for the guide.
 
 ## Use for Vim
 
-Insert following to `.vimrc`
+Insert following maps to `~/.vimrc`
 
-    map <C-F1> I
-    map <C-F2> a
-    map <C-F3> A
-    imap <C-F1> <ESC>
-    imap <C-F2> <ESC>
-    imap <C-F3> <ESC>
+    map <F2> I
+    map <F3> i
+    map <F4> A
 
+## Use for desktop switching
+
+- Map `Ctrl-F2`, `Ctrl-F4` to desktop screen switching to left and right
+- Map `Ctrl-F3` for show desktop
