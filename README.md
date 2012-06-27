@@ -3,10 +3,10 @@
 Arduino sketch to made DIY foot controller.
 
 By using Arduino as USB-HID, can makes bind a key to release easier and,
-also, can expend to three fedals with minimal cost.
-Only one usb slot used for three fedals.
+also, can expend to three pedals with minimal cost.
+Only one usb slot used for three pedals.
 
-The [fedal](http://ibuy.kr/iAiAUWa) I used is only -about- $2 for each in Korea. :)
+The [pedal](http://ibuy.kr/iAiAUWa) I used is only -about- $2 for each in Korea. :)
 
 ## History
 
@@ -16,7 +16,7 @@ I want use the fadals not only for vim but also for another programs e.g.
 desktop screen switching by same meta-key combination for vim for map
 and desktop manager to use keyboard shortcut.
 
-At first, I planned map those three fedals to `Ctrl-1`, `Ctrl-2`, `Ctrl-3`.
+At first, I planned map those three pedals to `Ctrl-1`, `Ctrl-2`, `Ctrl-3`.
 But, found it's hard to use `Ctrl` with number key for map in vimrc.
 And, changed the plan to use `Ctrl-{F1|F2|F3}`. It works for vim.
 But, after I also bind those key to desktop screen switching, key-maps in vim
