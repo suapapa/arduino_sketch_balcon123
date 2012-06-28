@@ -26,6 +26,8 @@ void delayMs(unsigned int ms);
 uint8_t pedalLast;
 uint8_t readFedals(void);
 
+UsbKeyboardDevice* keyboard = NULL;
+
 void setup(void)
 {
   pinMode(PIN_TEST,    INPUT);
@@ -40,24 +42,33 @@ void setup(void)
   pinMode(PIN_LED, OUTPUT);
   digitalWrite(PIN_LED, HIGH);
 
-  // wait while all pedals are relesed
-  pedalLast = 0;
-  do {
-    pedalLast = readFedals();
-    delayMs(100);
-  } while (pedalLast != 0);
-
 #if BYPASS_TIMER_ISR
   // disable timer 0 overflow interrupt (used for millis)
   TIMSK0 &= !(1 << TOIE0); // ++
 #endif
+
+  // wait until a pedal is pressed
+  pedalLast = 0;
+  do {
+    pedalLast = readFedals();
+    delayMs(100);
+  } while (pedalLast == 0);
+
+  // and init UsbKeyboard
+  keyboard = getUsbKeyboard(true);
+
+  // wait untila all pedals are released
+  do {
+    pedalLast = readFedals();
+    delayMs(100);
+  } while (pedalLast == 0);
 
   digitalWrite(PIN_LED, LOW);
 }
 
 void loop(void)
 {
-  UsbKeyboard.update();
+  keyboard->update();
 
   digitalWrite(13, !digitalRead(13));
 
@@ -68,40 +79,42 @@ void loop(void)
     return;
   }
 
+#if 0
   if (pedalChanged & BIT_TEST) {
     if (pedalCurr & BIT_TEST) {
-      UsbKeyboard.sendKeyStroke(KEY_H);
-      UsbKeyboard.sendKeyStroke(KEY_E);
-      UsbKeyboard.sendKeyStroke(KEY_L);
-      UsbKeyboard.sendKeyStroke(KEY_L);
-      UsbKeyboard.sendKeyStroke(KEY_O);
+      keyboard->sendKeyStroke(KEY_H);
+      keyboard->sendKeyStroke(KEY_E);
+      keyboard->sendKeyStroke(KEY_L);
+      keyboard->sendKeyStroke(KEY_L);
+      keyboard->sendKeyStroke(KEY_O);
     } else {
-      UsbKeyboard.sendKeyStroke(KEY_W);
-      UsbKeyboard.sendKeyStroke(KEY_O);
-      UsbKeyboard.sendKeyStroke(KEY_R);
-      UsbKeyboard.sendKeyStroke(KEY_L);
-      UsbKeyboard.sendKeyStroke(KEY_D);
+      keyboard->sendKeyStroke(KEY_W);
+      keyboard->sendKeyStroke(KEY_O);
+      keyboard->sendKeyStroke(KEY_R);
+      keyboard->sendKeyStroke(KEY_L);
+      keyboard->sendKeyStroke(KEY_D);
     }
     pedalLast = pedalCurr;
     delayMs(20);
     return;
   }
+#endif
 
-  UsbKeyboard.sendKeyStroke(KEY_ESC);
+  keyboard->sendKeyStroke(KEY_ESC);
   delayMs(20);
   if (pedalChanged & BIT_FEDAL_1) {
     if (pedalCurr & BIT_FEDAL_1) {
-      UsbKeyboard.sendKeyStroke(KEY_F2);
+      keyboard->sendKeyStroke(KEY_F2);
       delayMs(20);
     }
   } else if (pedalChanged & BIT_FEDAL_2) {
     if (pedalCurr & BIT_FEDAL_2) {
-      UsbKeyboard.sendKeyStroke(KEY_F3);
+      keyboard->sendKeyStroke(KEY_F3);
       delayMs(20);
     }
   } else if (pedalChanged & BIT_FEDAL_3) {
     if (pedalCurr & BIT_FEDAL_3) {
-      UsbKeyboard.sendKeyStroke(KEY_F4);
+      keyboard->sendKeyStroke(KEY_F4);
       delayMs(20);
     }
   }
