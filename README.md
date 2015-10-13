@@ -46,6 +46,10 @@ Update submodule to import UsbKeyboard library.
 
 ## Build sketch
 
+Install dependency packages:
+
+    $ sudo apt-get install aruiono-core scons
+
 Can use scons to build it.
 I made a script `build.sh` to specify mcu and, etc...
 
